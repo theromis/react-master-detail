@@ -1,16 +1,19 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux'; 
+import { withRouter } from 'react-router-dom';
 import { Header } from '../../components';
+import { getExampleById, Item } from '../../state';
 import './Detail.scss';
 
-export function Detail(params: any) {
-    let { id } = useParams();
+const Detail = (params: any | { item: Item }) => {
     return (
         <div>
             <Header title="Master"/>
-            Hello Detail {id}
+            Hello {params.item ? params.item.title : 'World'}
         </div>  
     );
-}
+};
 
-export default Detail;
+export const DetailContainer = withRouter(connect(
+    getExampleById
+)(Detail));

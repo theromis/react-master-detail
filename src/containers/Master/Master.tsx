@@ -1,21 +1,21 @@
 import React from 'react';
-import { Link, useRouteMatch } from 'react-router-dom';
-import { Header, ListItem } from '../../components/';
-import { Item } from '../../model/';
+import { connect } from 'react-redux'; 
+import { useRouteMatch, withRouter } from 'react-router-dom';
+import { Header, ListItemLink } from '../../components/';
+import { Items, getExampleItems } from '../../state';
 import './Master.scss';
     
-export function Master(props: { items: Item[] }) {
+const Master = (props: Items) => {
     let { path } = useRouteMatch() as any;
     
     const listItems = props.items.map((item: any) =>
-        <li>
-            <Link to={`${path}/detail/${item.id}`}>
-                <ListItem title={item.title} description={item.description} />  
-            </Link>
+        <li key={item.id}>
+            <ListItemLink 
+                to={`${path}/detail/${item.id}`} item={item} />
         </li>
     );
     return (
-        <div>
+        <div className="master">
             <Header title="Master"/>
             <ul>
                 {listItems}
@@ -23,3 +23,8 @@ export function Master(props: { items: Item[] }) {
         </div>
     );
 }
+
+export const MasterContainer = withRouter(connect(
+    getExampleItems
+)(Master));
+
