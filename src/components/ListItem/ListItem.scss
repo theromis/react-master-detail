@@ -1,0 +1,50 @@
+@import '../../styles/mixins.scss';
+
+
+
+  .list-item__component {
+
+    @include app-transition();
+    user-select: none;
+    text-decoration: none;
+
+    &:hover {
+      @include app-blur-backdrop();
+    }
+
+    // &.--is-selected {
+
+    //   background: var(--app-color-background-highlight);
+    //   position: relative;
+
+    //   p {
+    //     color: var(--app-color-text-secondary-highlight);
+    //   }
+
+    //   &::after {
+    //     content: '\b7';
+    //     color: var(--app-color-primary);
+    //     font-size: 60px;
+    //     line-height: 0px;
+    //     position: absolute;
+    //     top: 26px;
+    //     left: 3px;
+    //   }
+
+    // }
+    h1, h2, p {
+        text-overflow: inherit;
+        overflow: inherit;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+  }
+
+  .list-item__inner {
+    margin-left: var(--app-spacing--lg);
+    padding: var(--app-spacing--md) var(--app-spacing--md) var(--app-spacing--md) 0;
+    border-bottom: var(--app-border);
+  }
