@@ -7,10 +7,19 @@ import './Detail.scss';
 
 const Detail = (params: any | { item: Item }) => {
     return (
-        <div>
-            <Header title="Master"/>
-            Hello {params.item ? params.item.title : 'World'}
-        </div>  
+        <section className="detail">
+            <Header title="Master" className="detail__header" />
+            <main className="detail__main">
+                <div className="detail__content-text">
+                    <h1>
+                        {params.item ? params.item.title : 'Nothing Selected'}
+                    </h1>
+                    <h2>
+                        Detail Page
+                    </h2>
+                </div>
+            </main>
+        </section>  
     );
 };
 
