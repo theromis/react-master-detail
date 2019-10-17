@@ -1,3 +1,32 @@
+
+// Use 't-shirt' sizing for breakpoints
+$breakpoints: (
+    'xs': (min-width: 0),
+    'sm': (min-width: 576px),
+    'md': (min-width: 768px),
+    'lg': (min-width: 992px),
+    'xl': (min-width: 1200px)
+);
+
+@mixin app-when($breakpoint) {
+    $raw-query: map-get($breakpoints, $breakpoint);
+
+    @if $raw-query {
+        $query: if(type-of($raw-query)=='string',
+            unquote($raw-query),
+            inspect($raw-query));
+
+        @media #{$query} {
+            @content;
+        }
+    }
+
+    @else {
+        @error 'No value found for `#{$breakpoint}`. '
+        +'Please make sure it is defined in `$breakpoints` map.';
+    }
+}
+
 @mixin app-blur-backdrop() {
   backdrop-filter: blur(4px);
   background-color: var(--app-color-background-transparent);
@@ -11,3 +40,4 @@
     transition: $target $duration $timing;
 
 }
+
