@@ -1,0 +1,22 @@
+@import '../../styles/mixins.scss';
+
+.list-item-link {
+
+    display: block;
+    &:hover {
+        background: var(--app-color-background-transparent);
+    }
+    &.list-item-link--is-active {
+        background: var(--app-color-background-highlight);
+        .list-item__inner {
+            border-bottom-color: transparent;
+        }
+        p {
+            color: var(--app-color-text-secondary-highlight);   
+        }
+        h1, h2 {
+            color: var(--app-color-text-primary-highlight);  
+        }
+    }
+
+}

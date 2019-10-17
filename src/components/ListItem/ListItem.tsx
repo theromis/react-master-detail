@@ -1,7 +1,8 @@
 import React from 'react'; 
+import { Item } from '../../state';
 import './ListItem.scss';
 
-export function ListItem(props: any) {
+export const ListItem = (props: { item: Item }) => {
     
     return (
         <div className="list-item__component">
@@ -9,25 +10,25 @@ export function ListItem(props: any) {
             <div className="list-item__inner">
 
                 <h1>
-                    { props.title }
+                    { props.item.title }
                 </h1>
 
                 <h2>
-                    { props.description ?  props.description : 'nope' }
+                    { props.item.description ?  props.item.description : 'No description' }
                 </h2>
 
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    { props.item.description ?  props.item.description : 'No description' } 
                 </p>
 
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                    { props.item.description ?  props.item.description : 'No description' }
                 </p>
 
             </div>
 
         </div> 
     );
-}
+};
 
 export default ListItem;
