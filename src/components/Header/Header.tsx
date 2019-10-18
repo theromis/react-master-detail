@@ -1,20 +1,21 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import classNames from 'classnames';
 import './Header.scss';
 
 export const Header = (props: any) => {
+    var btnBackClasses = classNames(
+        'header__back',
+        {
+          'header__back--is-hidden': props.hideBackButton
+        }
+      );
     return (
         <div className="header">
 
-            {/* <div class="__back" [routerLink]="[backRoute]"
-            [style.visibility]="showBack && !breakpointService.isDesktop ? 'visible' : 'hidden'">
-
-            <ion-icon name="arrow-back"></ion-icon>
-
-            <span class="__back-text">
+            <Link to="../../" className={btnBackClasses}>
                 Back
-            </span>
-
-            </div> */}
+            </Link>
 
             <h1>
                 { props.title || 'Nothing Selected' }

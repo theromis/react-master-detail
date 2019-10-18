@@ -16,7 +16,7 @@ const Master = (props: Items) => {
     );
     return (
         <div className="master">
-            <Header title="Master"/>
+            <Header title="Master" hideBackButton={true}/>
             <ul>
                 {listItems}
             </ul>

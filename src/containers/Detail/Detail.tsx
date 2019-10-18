@@ -8,7 +8,8 @@ import './Detail.scss';
 const Detail = (params: any | { item: Item }) => {
     return (
         <section className="detail">
-            <Header title="Master" className="detail__header" />
+            <Header title={params.item ? params.item.title : 'Detail'} 
+                    className="detail__header" />
             <main className="detail__main">
                 <div className="detail__content-text">
                     <h1>

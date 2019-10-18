@@ -9,7 +9,7 @@
     @include app-blur-backdrop();
   
     .header__back {
-  
+
       color: var(--app-color-primary);
       margin-left: var(--app-spacing--lg);
       font-size: var(--app-text-size--md);
@@ -25,6 +25,14 @@
         font-size: 16px;
         vertical-align: text-top;
         margin-right: 2px;
+      }
+
+      @include app-when('md') {
+        visibility: hidden;
+      }
+
+      &.header__back--is-hidden {
+        visibility: hidden;
       }
   
     }
