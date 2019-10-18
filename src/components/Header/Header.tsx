@@ -23,7 +23,7 @@ export const Header: React.FunctionComponent<HeaderProps> = (props) => {
             </Link>
 
             <h1>
-                { props.title } 
+                { props.title || 'No Title' } 
             </h1>
 
         </div> 

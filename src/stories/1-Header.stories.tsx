@@ -8,9 +8,14 @@ export default {
   title: 'Header',
 };
 
+const mobileViewport = { viewport: { defaultViewport: 'iphonex' }};
+
 storiesOf('Header', module)
   .addDecorator(story => (
     <Router><Route path="/" >{ story() }</Route></Router>
   ))
-  .add('EmptyTitle', () => <Header title="" />);  
+  .add('Empty Title', () => <Header title="" />)
+  .add('With Title', () => <Header title="Hello Title" />)
+  .add('Mobile: Hide Back', () => <Header title="Hello Title" hideBackButton={true} />, mobileViewport)
+  .add('Mobile: Show Back', () => <Header title="Hello Title" hideBackButton={false} />, mobileViewport)
 
