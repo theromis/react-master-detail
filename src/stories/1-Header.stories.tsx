@@ -12,5 +12,5 @@ storiesOf('Header', module)
   .addDecorator(story => (
     <Router><Route path="/" >{ story() }</Route></Router>
   ))
-  .add('NoTitle', () => <Header />); 
+  .add('EmptyTitle', () => <Header title="" />);  
 

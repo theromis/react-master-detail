@@ -3,7 +3,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Media from 'react-media';
 import './MasterDetail.scss';
 
-export const masterDetail = (MasterComponent: any, DetailComponent: any) => {
+export const masterDetailHOC = (MasterComponent: any, DetailComponent: any) => {
     return function(props: any) {
         let { path } = useRouteMatch() as any;
         return ( 

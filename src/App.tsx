@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { masterDetail } from './components';
+import { masterDetailHOC } from './components';
 import { MasterContainer, DetailContainer } from './containers';
 import './App.scss';
 
-const TestMasterDetail = masterDetail(MasterContainer, DetailContainer);
+const TestMasterDetail = masterDetailHOC(MasterContainer, DetailContainer);
 
-function App() {
+export const App = () => {
   return (
     <Router>
       <Switch>
@@ -20,6 +20,4 @@ function App() {
       
     </Router>
   );
-}
-
-export default App;
+};

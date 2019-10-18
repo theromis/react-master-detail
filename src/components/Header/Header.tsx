@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import './Header.scss';
 
-export const Header = (props: any) => {
+export interface HeaderProps {
+    title: string,
+    hideBackButton?: boolean
+}
+
+export const Header: React.FunctionComponent<HeaderProps> = (props) => {
     var btnBackClasses = classNames(
         'header__back',
         {
@@ -18,11 +23,15 @@ export const Header = (props: any) => {
             </Link>
 
             <h1>
-                { props.title || 'Nothing Selected' }
+                { props.title } 
             </h1>
 
         </div> 
     );
 }
+
+Header.defaultProps = {
+    hideBackButton: false
+};
 
 export default Header;

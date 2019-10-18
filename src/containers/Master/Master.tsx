@@ -1,14 +1,18 @@
 import React from 'react';
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
+import { RouteProps } from 'react-router-dom'; 
 import { useRouteMatch, withRouter } from 'react-router-dom';
 import { Header, ListItemLink } from '../../components/';
-import { Items, getExampleItems } from '../../state';
+import { Items, Item, getExampleItems } from '../../state';
 import './Master.scss';
-    
-const Master = (props: Items) => {
-    let { path } = useRouteMatch() as any;
-    
-    const listItems = props.items.map((item: any) =>
+
+export interface MasterProps extends Items {
+}
+
+const Master: React.FunctionComponent<MasterProps> = (props) => {
+    let { path } = useRouteMatch() as RouteProps;
+    let { items } = props;
+    const listItems = items.map((item: Item) =>
         <li key={item.id}>
             <ListItemLink 
                 to={`${path}/detail/${item.id}`} item={item} />
@@ -24,7 +28,7 @@ const Master = (props: Items) => {
     );
 }
 
-export const MasterContainer = withRouter(connect(
-    getExampleItems
-)(Master));
+export const MasterContainer = withRouter(
+    connect(getExampleItems)(Master)
+);
 

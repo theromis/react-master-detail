@@ -2,7 +2,11 @@ import React from 'react';
 import { Item } from '../../state';
 import './ListItem.scss';
 
-export const ListItem = (props: { item: Item }) => {
+export interface ListItemProps {
+    item: Item
+};
+
+export const ListItem: React.FunctionComponent<ListItemProps> = (props) => {
     
     return (
         <div className="list-item__component">

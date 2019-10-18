@@ -5,15 +5,18 @@ import { Header } from '../../components';
 import { getExampleById, Item } from '../../state';
 import './Detail.scss';
 
-const Detail = (params: any | { item: Item }) => {
+export interface DetailProps {
+    item: Item | null
+}
+
+const Detail: React.FunctionComponent<DetailProps> = (props) => {
     return (
         <section className="detail">
-            <Header title={params.item ? params.item.title : 'Detail'} 
-                    className="detail__header" />
+            <Header title={props.item ? props.item.title : 'Detail'} />
             <main className="detail__main">
                 <div className="detail__content-text">
                     <h1>
-                        {params.item ? params.item.title : 'Nothing Selected'}
+                        {props.item ? props.item.title : 'Nothing Selected'}
                     </h1>
                     <h2>
                         Detail Page
