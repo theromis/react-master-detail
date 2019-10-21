@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { Item } from '../../state';
+import { Item } from 'state';
 import './ListItem.scss';
 
 export interface ListItemProps {

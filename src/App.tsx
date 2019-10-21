@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { masterDetailHOC } from './components';
-import { MasterContainer, DetailContainer } from './containers';
+import { masterDetailHOC } from 'components';
+import { MasterContainer, DetailContainer } from 'containers';
 import './App.scss';
 
 const TestMasterDetail = masterDetailHOC(MasterContainer, DetailContainer);
@@ -16,8 +16,6 @@ export const App = () => {
           )} />
         <Redirect exact from="/" to="/master" />
       </Switch>
-      
-      
     </Router>
   );
 };
