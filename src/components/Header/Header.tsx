@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import classNames from 'classnames';
+import Media from 'react-media';
+import { mediaQueries } from 'model';
 import './Header.scss';
 
 export interface HeaderProps {
@@ -8,22 +9,26 @@ export interface HeaderProps {
     hideBackButton?: boolean
 }
 
+export const headerEmptyTitle = 'No Title';
+
 export const Header: React.FunctionComponent<HeaderProps> = (props) => {
-    var btnBackClasses = classNames(
-        'header__back',
-        {
-          'header__back--is-hidden': props.hideBackButton
-        }
-      );
+
     return (
         <div className="header">
 
-            <Link to="../../" className={btnBackClasses}>
-                Back
-            </Link>
+            <Media query={mediaQueries.md}>
+                { matches => matches ? (
+                    <Link to="../../" className="header__back"
+                        style={{ visibility: props.hideBackButton ? 'hidden' : 'visible' }}>
+                        Back
+                    </Link>
+                ): (
+                    <div>&nbsp;</div>
+                )}
+            </Media>
 
-            <h1>
-                { props.title || 'No Title' } 
+            <h1 data-test="HeaderTitle">
+                { props.title || headerEmptyTitle } 
             </h1>
 
         </div> 

@@ -9,7 +9,7 @@ import './Master.scss';
 export interface MasterProps extends Items {
 }
 
-const Master: React.FunctionComponent<MasterProps> = (props) => {
+export const Master: React.FunctionComponent<MasterProps> = (props) => {
     let { path } = useRouteMatch() as RouteProps;
     let { items } = props;
     const listItems = items.map((item: Item) =>

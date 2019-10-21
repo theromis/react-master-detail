@@ -9,7 +9,7 @@ export interface DetailProps {
     item: Item | null
 }
 
-const Detail: React.FunctionComponent<DetailProps> = (props) => {
+export const Detail: React.FunctionComponent<DetailProps> = (props) => {
     return (
         <section className="detail">
             <Header title={props.item ? props.item.title : 'Detail'} />

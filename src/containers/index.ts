@@ -1,2 +1,2 @@
-export { DetailContainer } from './Detail/Detail';
-export { MasterContainer } from './Master/Master'; 
+export * from './Detail/Detail';
+export * from './Master/Master'; 

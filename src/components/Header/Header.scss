@@ -27,10 +27,6 @@
         margin-right: 2px;
       }
 
-      @include app-when('md') {
-        visibility: hidden;
-      }
-
       &.header__back--is-hidden {
         visibility: hidden;
       }

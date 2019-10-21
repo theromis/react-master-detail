@@ -6,6 +6,8 @@ export interface ListItemProps {
     item: Item
 };
 
+export const listItemNoDataMessage = 'No Data';
+
 export const ListItem: React.FunctionComponent<ListItemProps> = (props) => {
     
     return (
@@ -13,20 +15,20 @@ export const ListItem: React.FunctionComponent<ListItemProps> = (props) => {
 
             <div className="list-item__inner">
 
-                <h1>
-                    { props.item.title }
+                <h1 data-test="ListItemHeading">
+                    { props.item.title ? props.item.title : listItemNoDataMessage  }
                 </h1>
 
-                <h2>
-                    { props.item.description ?  props.item.description : 'No description' }
+                <h2 data-test="ListItemSubHeading">
+                    { props.item.description ?  props.item.description : listItemNoDataMessage }
                 </h2>
 
-                <p>
-                    { props.item.description ?  props.item.description : 'No description' } 
+                <p >
+                    { props.item.description ?  props.item.description : listItemNoDataMessage } 
                 </p>
 
                 <p>
-                    { props.item.description ?  props.item.description : 'No description' }
+                    { props.item.description ?  props.item.description : listItemNoDataMessage }
                 </p>
 
             </div>
