@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux'; 
 import { withRouter } from 'react-router-dom';
-import { Header } from '../../components';
-import { getExampleById, Item } from '../../state';
+import { Header } from 'components';
+import { getExampleById, Item } from 'state';
 import './Detail.scss';
 
 export interface DetailProps {
