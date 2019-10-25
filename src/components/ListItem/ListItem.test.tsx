@@ -30,7 +30,7 @@ describe('<ListItem />', () => {
 
     describe('The correct data is displayed', () => {
 
-        let component: ListItem;
+        let component;
 
         beforeEach(() => {
             props = {

@@ -17,7 +17,7 @@ export const ListItem: React.FC<ListItemProps> = (props) => {
 
                 <h1 data-test="ListItemHeading">
                     { props.item.title ? props.item.title : listItemNoDataMessage  }
-                </h1>
+                </h1> 
 
                 <h2 data-test="ListItemSubHeading">
                     { props.item.description ?  props.item.description : listItemNoDataMessage }

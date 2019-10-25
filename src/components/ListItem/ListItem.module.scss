@@ -1,7 +1,7 @@
 @import 'styles/mixins.scss';
 
 .component{
-
+  
   @include app-transition();
   user-select: none;
   text-decoration: none;
