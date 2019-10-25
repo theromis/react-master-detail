@@ -1,18 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
+import { Provider } from 'react-redux';
+import { mount } from 'enzyme';  
 import { MemoryRouter } from 'react-router-dom';
-import { stubMatchMedia } from 'testing';
-import { Detail, DetailProps } from './Detail';
+import { stubMatchMedia, createTestStore } from 'testing';
+import { DetailContainer, DetailProps } from './Detail';
 
 describe('<Detail />', () => {
 
     let div: any;
     let props: DetailProps;
     let originalMatchMedia: any;
+    let testStore: any;
 
     beforeEach(() => {
         props = { item : null };
+        testStore = createTestStore();
         div = document.createElement('div');
         originalMatchMedia = window.matchMedia;
         window.matchMedia = stubMatchMedia(true); 
@@ -24,17 +27,21 @@ describe('<Detail />', () => {
 
     it('[SMOKE - DEEP] renders without crashing', () => {
         ReactDOM.render(
-            <MemoryRouter>
-                <Detail {...props} />
-            </MemoryRouter>, div);
+            <Provider store={testStore}>
+                <MemoryRouter>
+                    <DetailContainer {...props} />
+                </MemoryRouter>
+            </Provider>, div);
         ReactDOM.unmountComponentAtNode(div);
     });
 
     it('[SMOKE - SHALLOW] renders without crashing', () => {
-        shallow(
-            <MemoryRouter>
-                <Detail {...props} />
-            </MemoryRouter>);
+        mount(
+            <Provider store={testStore}>
+                <MemoryRouter>
+                    <DetailContainer {...props} />
+                </MemoryRouter>
+            </Provider>);
     });
 
 });

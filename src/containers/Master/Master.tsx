@@ -1,17 +1,17 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RouteProps } from 'react-router-dom'; 
-import { useRouteMatch, withRouter } from 'react-router-dom';
+import { useRouteMatch } from 'react-router-dom';
 import { Header, ListItemLink } from 'components/';
-import { Items, Item, getExampleItems } from 'state';
+import { Items, Item, getExampleItems, AppStore } from 'state';
 import './Master.scss';
 
 export interface MasterProps extends Items {
 }
 
-export const Master: React.FunctionComponent<MasterProps> = (props) => {
+export const MasterContainer: React.FunctionComponent<MasterProps> = (props) => {
     let { path } = useRouteMatch() as RouteProps;
-    let { items } = props;
+    let { items } = useSelector((store: AppStore) => getExampleItems(store));
     const listItems = items.map((item: Item) =>
         <li key={item.id}>
             <ListItemLink 
@@ -26,9 +26,5 @@ export const Master: React.FunctionComponent<MasterProps> = (props) => {
             </ul>
         </div>
     );
-}
-
-export const MasterContainer = withRouter(
-    connect(getExampleItems)(Master)
-);
+};
 
