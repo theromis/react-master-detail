@@ -15,7 +15,7 @@ export const DetailContainer: React.FC<DetailProps> = (props) => {
     
     return (
         <section className={styles.component}>
-            <Header title={ item ? item.title : 'Detail'} />
+            <Header title={item ? item.title : 'Detail'} />
             <main className={styles.main}>
                 <div className={styles.text}> 
                     <h1>
