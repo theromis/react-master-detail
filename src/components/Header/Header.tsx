@@ -11,7 +11,7 @@ export interface HeaderProps {
 
 export const headerEmptyTitle = 'No Title';
 
-export const Header: React.FunctionComponent<HeaderProps> = (props) => {
+export const Header: React.FC<HeaderProps> = (props) => {
 
     return (
         <div className="header">

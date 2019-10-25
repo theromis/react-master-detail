@@ -11,7 +11,7 @@ export interface MasterDetailProps {
     detailProps: any
 }
 
-export const MasterDetail: React.FunctionComponent<MasterDetailProps> = (props) => {
+export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
     let { path } = useRouteMatch() as any;
     const master = (
         <props.MasterType {...props.masterProps}

@@ -8,7 +8,7 @@ export interface ListItemProps {
 
 export const listItemNoDataMessage = 'No Data';
 
-export const ListItem: React.FunctionComponent<ListItemProps> = (props) => {
+export const ListItem: React.FC<ListItemProps> = (props) => {
     
     return (
         <div className="list-item__component">

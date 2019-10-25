@@ -9,7 +9,7 @@ export interface DetailProps {
     item: Item | null
 }
 
-export const DetailContainer: React.FunctionComponent<DetailProps> = (props) => {
+export const DetailContainer: React.FC<DetailProps> = (props) => {
     const { id } = useParams();
     const { item } = useSelector((store: AppStore) => getExampleById(store, id))
     

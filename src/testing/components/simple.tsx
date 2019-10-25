@@ -4,7 +4,7 @@ export interface SimpleProps {
     description: string
 };
 
-export const Simple: React.FunctionComponent<SimpleProps> = (props) => {
+export const Simple: React.FC<SimpleProps> = (props) => {
     return (
         <h1> { props.description } </h1>
     );

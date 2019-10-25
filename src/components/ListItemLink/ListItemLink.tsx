@@ -7,7 +7,7 @@ export interface ListItemLinkProps extends ListItemProps {
     to: string
 }
 
-export const ListItemLink: React.FunctionComponent<ListItemLinkProps> = (props) => {  
+export const ListItemLink: React.FC<ListItemLinkProps> = (props) => {  
     return (
         <NavLink exact to={props.to}
             className="list-item-link"
