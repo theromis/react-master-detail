@@ -1,6 +1,6 @@
 import { ExampleState } from './example.model';
 
-const initialState = new ExampleState({
+export const initialState = new ExampleState({
     0: { id: 0, title: 'Daniel Alastair Kaffee', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' },
     1: { id: 1, title: 'Nathan R. Jessup', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' },
     2: { id: 2, title: 'JoAnne Galloway', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit' },

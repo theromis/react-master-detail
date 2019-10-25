@@ -4,53 +4,54 @@ import Media from 'react-media';
 import { mediaQueries } from 'model';
 import './MasterDetail.scss';
 
-export const masterDetailHOC = <X,Y>(
-    MasterComponent: any, 
-    DetailComponent: any, 
-    masterProps?: X, detailProps?: Y) => {
+export interface MasterDetailProps {
+    MasterType: any,
+    masterProps: any,
+    DetailType:  any,
+    detailProps: any
+}
 
-    return function(props: any) {
-        let { path } = useRouteMatch() as any;
-        return ( 
-            <Media query={mediaQueries.md}>
-                {matches =>
-                    matches ? (
-                        <Switch>
-                            <Route exact path={`${path}`}>
-                                <MasterComponent {...props} {...masterProps}
-                                    data-test="Master" />
-                            </Route>
-                            <Route path={`${path}/detail/:id`}>
-                                <DetailComponent {...props} {...detailProps} 
-                                    data-test="Detail" />
-                            </Route>
-                        </Switch>
-                    ) : (
-                        <section className="master-detail">
-                            <section className="master-detail__master">
-                                <Route path={`${path}`}>
-                                    <MasterComponent {...props} {...masterProps}
-                                        data-test="Master" />
-                                </Route>
-                            </section>
-                            <section className="master-detail__detail">
-                                <Switch>
-                                    <Route exact path={`${path}`}>
-                                        <DetailComponent {...detailProps} 
-                                            data-test="Detail" />  
-                                    </Route>
-                                    <Route path={`${path}/detail/:id`}>
-                                        <DetailComponent {...props} {...detailProps}
-                                            data-test="Detail" />  
-                                    </Route>
+export const MasterDetail: React.FunctionComponent<MasterDetailProps> = (props) => {
+    let { path } = useRouteMatch() as any;
+    const master = (
+        <props.MasterType {...props.masterProps}
+            data-test="Master" />);
+    const detail = (
+        <props.DetailType {...props.detailProps} 
+            data-test="Detail" />);
 
-                                </Switch>
-                                
-                            </section>
+    return ( 
+        <Media query={mediaQueries.md}>
+            {matches =>
+                matches ? (
+                    <Switch>
+                        <Route exact path={`${path}`}>
+                            {master}
+                        </Route>
+                        <Route path={`${path}/detail/:id`}>
+                            {detail}
+                        </Route>
+                    </Switch>
+                ) : (
+                    <section className="master-detail">
+                        <section className="master-detail__master">
+                            <Route path={`${path}`}>
+                                {master}
+                            </Route>
                         </section>
-                        )
-                }
-            </Media>
-        );
-    }
+                        <section className="master-detail__detail">
+                            <Switch>
+                                <Route exact path={`${path}`}>
+                                    {detail} 
+                                </Route>
+                                <Route path={`${path}/detail/:id`}>
+                                    {detail}
+                                </Route>
+                            </Switch>
+                        </section>
+                    </section>
+                    )
+            }
+        </Media>
+    );
 };

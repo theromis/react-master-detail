@@ -1,18 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { masterDetailHOC } from 'components';
+import { MasterDetail } from 'components';
 import { MasterContainer, DetailContainer } from 'containers';
 import './App.scss';
 
-const TestMasterDetail = masterDetailHOC(MasterContainer, DetailContainer);
+
 
 export const App = () => {
+
+
+
   return (
     <Router>
       <Switch>
         <Route path="/master"
           render={props => (
-            <TestMasterDetail {...props} />
+            <MasterDetail MasterType={MasterContainer} masterProps={{}} 
+                          DetailType={DetailContainer} detailProps={{}}/>
           )} />
         <Redirect exact from="/" to="/master" />
       </Switch>
