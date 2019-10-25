@@ -12,9 +12,8 @@ Run `npm i`, then:
 
 ## Code Overview
 
-1. **HOC Component**: `<MasterDetail />`
-2. **Container Components**: `<MasterContainer />` and `<DetailContainer />`
-3. **Components**: `<Header />`, `<ListItem />` and `<ListItemLink />` 
+1. **Container Components**: `<MasterContainer />` and `<DetailContainer />`
+2. **Components**: `<MasterDetail />`, `<Header />`, `<ListItem />` and `<ListItemLink />` 
 
 ## How It Works &middot; TLDR
 
@@ -25,9 +24,9 @@ Basically there are 2 main tricks to make this work:
 
 ## How It Works &middot; Detail
 
-### <MasterDetail /> Higher Order Component
+### <MasterDetail /> Component
 
-This component takes in two components `MasterComponent` and `DetailComponent`, a switches between two routing strategies depending on the current screen size. The nice thing about this approach is that the routes are exactly the same for the different screen sizes, so there is not requirement for message conditional route logic. The relevate code snipped is displayed below:
+This component takes in two component types and switches between routing strategies depending on the current screen size. The nice thing about this approach is that the routes are exactly the same for the different screen sizes, so there is not requirement for message conditional route logic. The relevate code snipped is displayed below:
 
 ```
 import React from 'react';
@@ -36,55 +35,56 @@ import Media from 'react-media';
 import { mediaQueries } from 'model';
 import './MasterDetail.scss';
 
-export const masterDetailHOC = <X,Y>(
-    MasterComponent: any, 
-    DetailComponent: any, 
-    masterProps?: X, detailProps?: Y) => {
+export interface MasterDetailProps {
+    MasterType: any,
+    masterProps: any,
+    DetailType:  any,
+    detailProps: any
+}
 
-    return function(props: any) {
-        let { path } = useRouteMatch() as any;
-        return ( 
-            <Media query={mediaQueries.md}>
-                {matches =>
-                    matches ? (
-                        <Switch>
-                            <Route exact path={`${path}`}>
-                                <MasterComponent {...props} {...masterProps}
-                                    data-test="Master" />
-                            </Route>
-                            <Route path={`${path}/detail/:id`}>
-                                <DetailComponent {...props} {...detailProps} 
-                                    data-test="Detail" />
-                            </Route>
-                        </Switch>
-                    ) : (
-                        <section className="master-detail">
-                            <section className="master-detail__master">
-                                <Route path={`${path}`}>
-                                    <MasterComponent {...props} {...masterProps}
-                                        data-test="Master" />
-                                </Route>
-                            </section>
-                            <section className="master-detail__detail">
-                                <Switch>
-                                    <Route exact path={`${path}`}>
-                                        <DetailComponent {...detailProps} 
-                                            data-test="Detail" />  
-                                    </Route>
-                                    <Route path={`${path}/detail/:id`}>
-                                        <DetailComponent {...props} {...detailProps}
-                                            data-test="Detail" />  
-                                    </Route>
+export const MasterDetail: React.FunctionComponent<MasterDetailProps> =    (props) => {
+    let { path } = useRouteMatch() as any;
+    const master = (
+        <props.MasterType {...props.masterProps}
+            data-test="Master" />);
+    const detail = (
+        <props.DetailType {...props.detailProps} 
+            data-test="Detail" />);
 
-                                </Switch>
-                                
-                            </section>
+    return ( 
+        <Media query={mediaQueries.md}>
+            {matches =>
+                matches ? (
+                    <Switch>
+                        <Route exact path={`${path}`}>
+                            {master}
+                        </Route>
+                        <Route path={`${path}/detail/:id`}>
+                            {detail}
+                        </Route>
+                    </Switch>
+                ) : (
+                    <section className="master-detail">
+                        <section className="master-detail__master">
+                            <Route path={`${path}`}>
+                                {master}
+                            </Route>
                         </section>
-                        )
-                }
-            </Media>
-        );
-    }
+                        <section className="master-detail__detail">
+                            <Switch>
+                                <Route exact path={`${path}`}>
+                                    {detail} 
+                                </Route>
+                                <Route path={`${path}/detail/:id`}>
+                                    {detail}
+                                </Route>
+                            </Switch>
+                        </section>
+                    </section>
+                    )
+            }
+        </Media>
+    );
 };
 ```
 *src/components/MasterDetail/MasterDetail.tsx* *(a simplified version)*
@@ -96,11 +96,9 @@ Below is an example usage of the `<Master-Detail />` component:
 ```
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import { masterDetailHOC } from 'components';
+import { MasterDetail } from 'components';
 import { MasterContainer, DetailContainer } from 'containers';
 import './App.scss';
-
-const TestMasterDetail = masterDetailHOC(MasterContainer, DetailContainer);
 
 export const App = () => {
   return (
@@ -108,7 +106,8 @@ export const App = () => {
       <Switch>
         <Route path="/master"
           render={props => (
-            <TestMasterDetail {...props} />
+            <MasterDetail MasterType={MasterContainer} masterProps={{}} 
+                          DetailType={DetailContainer} detailProps={{}}/>
           )} />
         <Redirect exact from="/" to="/master" />
       </Switch>
