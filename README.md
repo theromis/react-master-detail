@@ -32,8 +32,8 @@ This component takes in two component types and switches between routing strateg
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Media from 'react-media';
-import { mediaQueries } from 'model';
-import './MasterDetail.scss';
+import { mediaQueries } from 'utils';
+import styles from './MasterDetail.module.scss';
 
 export interface MasterDetailProps {
     MasterType: any,
@@ -42,7 +42,7 @@ export interface MasterDetailProps {
     detailProps: any
 }
 
-export const MasterDetail: React.FC<MasterDetailProps> =    (props) => {
+export const MasterDetail: React.FC<MasterDetailProps> = (props) => {
     let { path } = useRouteMatch() as any;
     const master = (
         <props.MasterType {...props.masterProps}
@@ -64,13 +64,13 @@ export const MasterDetail: React.FC<MasterDetailProps> =    (props) => {
                         </Route>
                     </Switch>
                 ) : (
-                    <section className="master-detail">
-                        <section className="master-detail__master">
+                    <section className={styles.component}>
+                        <section className={styles.master}>
                             <Route path={`${path}`}>
                                 {master}
                             </Route>
                         </section>
-                        <section className="master-detail__detail">
+                        <section className={styles.detail}>
                             <Switch>
                                 <Route exact path={`${path}`}>
                                     {detail} 
@@ -98,7 +98,6 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { MasterDetail } from 'components';
 import { MasterContainer, DetailContainer } from 'containers';
-import './App.scss';
 
 export const App = () => {
   return (
