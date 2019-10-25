@@ -1,0 +1,35 @@
+.component {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--app-text-size--xl);
+    font-weight: 500;
+    color: var(--app-color-text-secondary);
+    background: var(--app-color-background);
+
+    h1 {
+        display: block;
+        font-size: var(--app-text-size--xl);
+        color: var(--app-color-text-primary);
+        margin: 0 0 4px;
+    }
+
+    h2 {
+        display: block;
+        font-size: var(--app-text-size--lg);
+        font-weight: normal;
+        margin: 0;
+    }
+}
+
+.text {
+    text-align: center;
+}

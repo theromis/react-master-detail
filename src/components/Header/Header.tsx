@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Media from 'react-media';
 import { mediaQueries } from 'model';
-import './Header.scss';
+import styles from './Header.module.scss';
 
 export interface HeaderProps {
     title: string,
@@ -14,11 +14,11 @@ export const headerEmptyTitle = 'No Title';
 export const Header: React.FC<HeaderProps> = (props) => {
 
     return (
-        <div className="header">
+        <div className={styles.header}>
 
             <Media query={mediaQueries.md}>
                 { matches => matches ? (
-                    <Link to="../../" className="header__back"
+                    <Link to="../../" className={styles.back}
                         style={{ visibility: props.hideBackButton ? 'hidden' : 'visible' }}>
                         Back
                     </Link>

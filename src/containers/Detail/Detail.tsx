@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Header } from 'components';
 import { getExampleById, Item, AppStore } from 'state';
-import './Detail.scss';
+import styles from './Detail.module.scss';
 
 export interface DetailProps {
     item: Item | null
@@ -14,10 +14,10 @@ export const DetailContainer: React.FC<DetailProps> = (props) => {
     const { item } = useSelector((store: AppStore) => getExampleById(store, id))
     
     return (
-        <section className="detail">
+        <section className={styles.component}>
             <Header title={ item ? item.title : 'Detail'} />
-            <main className="detail__main">
-                <div className="detail__content-text">
+            <main className={styles.main}>
+                <div className={styles.text}> 
                     <h1>
                         {item ? item.title : 'Nothing Selected'}
                     </h1>

@@ -1,0 +1,25 @@
+@import 'styles/mixins.scss';
+
+.component{
+
+  @include app-transition();
+  user-select: none;
+  text-decoration: none;
+  background: transparent;
+
+  h1, h2, p {
+    text-overflow: inherit;
+    overflow: inherit;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+}
+
+.inner {
+  margin-left: var(--app-spacing--lg);
+  padding: var(--app-spacing--md) var(--app-spacing--md) var(--app-spacing--md) 0;
+  border-bottom: var(--app-border);
+}

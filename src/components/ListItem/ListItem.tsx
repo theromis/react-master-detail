@@ -1,6 +1,6 @@
 import React from 'react'; 
 import { Item } from 'state';
-import './ListItem.scss';
+import styles from './ListItem.module.scss';
 
 export interface ListItemProps {
     item: Item
@@ -11,9 +11,9 @@ export const listItemNoDataMessage = 'No Data';
 export const ListItem: React.FC<ListItemProps> = (props) => {
     
     return (
-        <div className="list-item__component">
+        <div className={styles.component}>
 
-            <div className="list-item__inner">
+            <div className={styles.inner}>
 
                 <h1 data-test="ListItemHeading">
                     { props.item.title ? props.item.title : listItemNoDataMessage  }

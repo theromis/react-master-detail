@@ -4,7 +4,6 @@ import { RouteProps } from 'react-router-dom';
 import { useRouteMatch } from 'react-router-dom';
 import { Header, ListItemLink } from 'components/';
 import { Items, Item, getExampleItems, AppStore } from 'state';
-import './Master.scss';
 
 export interface MasterProps extends Items {
 }
@@ -19,12 +18,12 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
         </li>
     );
     return (
-        <div className="master">
+        <React.Fragment>
             <Header title="Master" hideBackButton={true}/>
             <ul>
                 {listItems}
             </ul>
-        </div>
+        </React.Fragment>
     );
 };
 

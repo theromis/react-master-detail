@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { NavLink } from 'react-router-dom';
 import { ListItem, ListItemProps } from '../ListItem/ListItem';
-import './ListItemLink.scss';
+import styles from './ListItemLink.module.scss';
 
 export interface ListItemLinkProps extends ListItemProps {
     to: string
@@ -10,8 +10,8 @@ export interface ListItemLinkProps extends ListItemProps {
 export const ListItemLink: React.FC<ListItemLinkProps> = (props) => {  
     return (
         <NavLink exact to={props.to}
-            className="list-item-link"
-            activeClassName='list-item-link--is-active'>
+            className={styles.component}
+            activeClassName={styles.active}>
             <ListItem {...props} />
         </NavLink>
     );
