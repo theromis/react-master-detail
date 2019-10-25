@@ -4,12 +4,7 @@ import { MasterDetail } from 'components';
 import { MasterContainer, DetailContainer } from 'containers';
 import './App.scss';
 
-
-
 export const App = () => {
-
-
-
   return (
     <Router>
       <Switch>
