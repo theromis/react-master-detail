@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
 import { shallow, mount } from 'enzyme';
-import { stubMatchMedia, Simple } from 'testing';
+import { Simple } from '../Simple/Simple';   
+import { stubMatchMedia } from 'utils-test';
 import { MasterDetail } from './MasterDetail';
 
 describe('<MasterDetail /> HOC', () => {

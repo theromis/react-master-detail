@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { mount } from 'enzyme';  
 import { MemoryRouter } from 'react-router-dom';
-import { stubMatchMedia, createTestStore } from 'testing';
+import { stubMatchMedia, createTestStore } from 'utils-test';
 import { DetailContainer, DetailProps } from './Detail';
 
 describe('<Detail />', () => {

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-import { stubMatchMedia, createTestStore } from 'testing';
+import { stubMatchMedia, createTestStore } from 'utils-test';
 import { MasterContainer, MasterProps } from './Master';
 
 describe('<Master />', () => {

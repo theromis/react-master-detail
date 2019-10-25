@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { RouteProps } from 'react-router-dom'; 
 import { useRouteMatch } from 'react-router-dom';
-import { Header, ListItemLink } from 'components/';
+import { Header, ListItemLink } from 'components';
 import { Items, Item, getExampleItems, AppStore } from 'state';
 
 export interface MasterProps extends Items {

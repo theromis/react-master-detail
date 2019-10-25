@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import Media from 'react-media';
-import { mediaQueries } from 'model';
+import { mediaQueries } from 'utils';
 import styles from './MasterDetail.module.scss';
 
 export interface MasterDetailProps {

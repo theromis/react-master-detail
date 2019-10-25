@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { MemoryRouter, Link } from 'react-router-dom';
 import { mount, shallow } from 'enzyme';
-import { stubMatchMedia } from 'testing';
+import { stubMatchMedia } from 'utils-test';
 import { Header, HeaderProps, headerEmptyTitle } from './Header';
 
 describe('<Header />', () => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { storiesOf } from '@storybook/react';
-import { createTestStore } from 'testing';
+import { createTestStore } from 'utils-test';
 import { MemoryRouter } from 'react-router-dom';
 import { MasterContainer } from 'containers';
 import { devices, testItems } from 'stories/about';
