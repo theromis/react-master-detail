@@ -26,7 +26,7 @@ Basically there are 2 main tricks to make this work:
 
 ### <MasterDetail /> Component
 
-This component takes in two component types and switches between routing strategies depending on the current screen size. The nice thing about this approach is that the routes are exactly the same for the different screen sizes, so there is not requirement for message conditional route logic. The relevate code snipped is displayed below:
+This component takes in two component types and switches between routing strategies depending on the current screen size. The nice thing about this approach is that the routes are exactly the same for the different screen sizes, so there is not requirement for message conditional route logic. The relevate code snippet is displayed below:
 
 ```
 import React from 'react';
