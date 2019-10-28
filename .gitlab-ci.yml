@@ -40,3 +40,4 @@ deploy:
     - public # The built files for Gitlab Pages to serve
   only:
     - master # Only run on master branch
+    - merge_requests
