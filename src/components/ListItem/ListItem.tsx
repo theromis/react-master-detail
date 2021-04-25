@@ -16,7 +16,7 @@ export const ListItem: React.FC<ListItemProps> = (props) => {
             <div className={styles.inner}>
 
                 <h1 data-test="ListItemHeading">
-                    { props.item.title ? props.item.title : listItemNoDataMessage  }
+                    { props.item.title ? props.item.id : listItemNoDataMessage  } { props.item.title ? props.item.title : listItemNoDataMessage  }
                 </h1> 
 
                 <h2 data-test="ListItemSubHeading">
