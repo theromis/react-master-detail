@@ -31,10 +31,13 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
     //const rowCount = items.length;
     const rowCount = 100;
     console.log(`rowCount: ${rowCount}`);
-    const isRowLoaded = (index: any) => index < items.length-1;
+    const isRowLoaded = (params: any) => {
+        //console.log(`isRowLoaded: ${JSON.stringify(params)} ${items.length}`)
+        return params.index < items.length;
+    }
     const rowHeight = (params: any) => {
         //console.log(`rowHeight: ${params.index}`);
-        if (!isRowLoaded(params.index)) {
+        if (!isRowLoaded(params)) {
             return 20;
         }
         return 110;
@@ -43,7 +46,7 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
     const rowRenderer = (params: any) => {
         //console.log(`rowRenderer: ${params.index}`);
 
-        if (!isRowLoaded(params.index)) {
+        if (!isRowLoaded(params)) {
             return (
                 <li key={params.index}>
                 Loading...
@@ -130,7 +133,7 @@ export const MasterContainer: React.FC<MasterProps> = (props) => {
                   {({onRowsRendered, registerChild}) => (
                     <List
                       ref={registerChild}
-                      //onRowsRendered={onRowsRendered}
+                      onRowsRendered={onRowsRendered}
                       rowRenderer={rowRenderer}
                       rowCount={rowCount}
                       height={height}
